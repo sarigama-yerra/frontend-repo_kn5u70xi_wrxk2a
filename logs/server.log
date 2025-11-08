@@ -3,24 +3,24 @@
 > vite
 
 
-  VITE v5.4.20  ready in 273 ms
+  VITE v5.4.20  ready in 284 ms
 
   ➜  Local:   http://localhost:3000/
   ➜  Network: http://172.20.5.154:3000/
-6:16:03 AM [vite] Pre-transform error: Transform failed with 1 error:
-/home/workspace/src/components/Hero.jsx:57:34: ERROR: Expected "}" but found ":"
-6:16:04 AM [vite] Internal server error: Transform failed with 1 error:
-/home/workspace/src/components/Hero.jsx:57:34: ERROR: Expected "}" but found ":"
+6:19:04 AM [vite] Pre-transform error: Transform failed with 1 error:
+/home/workspace/src/components/Hero.jsx:91:34: ERROR: Expected "}" but found ":"
+6:19:04 AM [vite] Internal server error: Transform failed with 1 error:
+/home/workspace/src/components/Hero.jsx:91:34: ERROR: Expected "}" but found ":"
   Plugin: vite:esbuild
-  File: /home/workspace/src/components/Hero.jsx:57:34
+  File: /home/workspace/src/components/Hero.jsx:91:34
   
   Expected "}" but found ":"
-  55 |            <div className="animate-[marquee_18s_linear_infinite] whitespace-nowrap p-3 font-mono text-xs text-cyan-200/70">
-  56 |              $ npm run build —> optimized production bundle • CI ready • type-safe • lint clean • deploy in seconds
-  57 |              — const dev = { html: true, css: true, js: true, php: true, laravel: true, python: true } — keep shipping 🚀
+  89 |            <div className="animate-[marquee_18s_linear_infinite] whitespace-nowrap p-3 font-mono text-xs text-cyan-200/70">
+  90 |              $ npm run build —> optimized production bundle • CI ready • type-safe • lint clean • deploy in seconds
+  91 |              — const dev = { html: true, css: true, js: true, php: true, laravel: true, python: true } — keep shipping 🚀
      |                                    ^
-  58 |            </div>
-  59 |          </div>
+  92 |            </div>
+  93 |          </div>
   
       at failureErrorWithLog (/home/workspace/node_modules/esbuild/lib/main.js:1472:15)
       at /home/workspace/node_modules/esbuild/lib/main.js:755:50
@@ -32,18 +32,41 @@
       at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
       at Readable.push (node:internal/streams/readable:390:5)
       at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
-6:16:09 AM [vite] Internal server error: Transform failed with 1 error:
-/home/workspace/src/components/Hero.jsx:57:34: ERROR: Expected "}" but found ":"
+6:19:05 AM [vite] Internal server error: Transform failed with 1 error:
+/home/workspace/src/components/Hero.jsx:91:34: ERROR: Expected "}" but found ":"
   Plugin: vite:esbuild
-  File: /home/workspace/src/components/Hero.jsx:57:34
+  File: /home/workspace/src/components/Hero.jsx:91:34
   
   Expected "}" but found ":"
-  55 |            <div className="animate-[marquee_18s_linear_infinite] whitespace-nowrap p-3 font-mono text-xs text-cyan-200/70">
-  56 |              $ npm run build —> optimized production bundle • CI ready • type-safe • lint clean • deploy in seconds
-  57 |              — const dev = { html: true, css: true, js: true, php: true, laravel: true, python: true } — keep shipping 🚀
+  89 |            <div className="animate-[marquee_18s_linear_infinite] whitespace-nowrap p-3 font-mono text-xs text-cyan-200/70">
+  90 |              $ npm run build —> optimized production bundle • CI ready • type-safe • lint clean • deploy in seconds
+  91 |              — const dev = { html: true, css: true, js: true, php: true, laravel: true, python: true } — keep shipping 🚀
      |                                    ^
-  58 |            </div>
-  59 |          </div>
+  92 |            </div>
+  93 |          </div>
+  
+      at failureErrorWithLog (/home/workspace/node_modules/esbuild/lib/main.js:1472:15)
+      at /home/workspace/node_modules/esbuild/lib/main.js:755:50
+      at responseCallbacks.<computed> (/home/workspace/node_modules/esbuild/lib/main.js:622:9)
+      at handleIncomingPacket (/home/workspace/node_modules/esbuild/lib/main.js:677:12)
+      at Socket.readFromStdout (/home/workspace/node_modules/esbuild/lib/main.js:600:7)
+      at Socket.emit (node:events:508:28)
+      at addChunk (node:internal/streams/readable:559:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+      at Readable.push (node:internal/streams/readable:390:5)
+      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+6:19:28 AM [vite] Internal server error: Transform failed with 1 error:
+/home/workspace/src/components/Hero.jsx:91:34: ERROR: Expected "}" but found ":"
+  Plugin: vite:esbuild
+  File: /home/workspace/src/components/Hero.jsx:91:34
+  
+  Expected "}" but found ":"
+  89 |            <div className="animate-[marquee_18s_linear_infinite] whitespace-nowrap p-3 font-mono text-xs text-cyan-200/70">
+  90 |              $ npm run build —> optimized production bundle • CI ready • type-safe • lint clean • deploy in seconds
+  91 |              — const dev = { html: true, css: true, js: true, php: true, laravel: true, python: true } — keep shipping 🚀
+     |                                    ^
+  92 |            </div>
+  93 |          </div>
   
       at failureErrorWithLog (/home/workspace/node_modules/esbuild/lib/main.js:1472:15)
       at /home/workspace/node_modules/esbuild/lib/main.js:755:50

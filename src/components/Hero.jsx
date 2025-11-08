@@ -1,16 +1,50 @@
-import React from 'react';
-import Spline from '@splinetool/react-spline';
+import React, { useEffect, useState } from 'react';
 
 const Hero = () => {
+  const [SplineComp, setSplineComp] = useState(null);
+
+  // Lazy-load Spline so the page still renders even if the package/asset is unavailable
+  useEffect(() => {
+    let mounted = true;
+    import('@splinetool/react-spline')
+      .then((mod) => {
+        if (mounted) setSplineComp(() => mod.default);
+      })
+      .catch(() => {
+        // If Spline fails to load, we gracefully degrade to gradient background
+        setSplineComp(null);
+      });
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
   return (
     <section id="home" className="relative min-h-screen w-full overflow-hidden bg-slate-950 text-white">
-      {/* 3D Spline Background */}
-      <div className="absolute inset-0">
-        <Spline
-          scene="https://prod.spline.design/FduaNp3csZktbOi3/scene.splinecode"
-          style={{ width: '100%', height: '100%' }}
-        />
-      </div>
+      {/* 3D Spline Background (optional) */}
+      {SplineComp ? (
+        <div className="absolute inset-0">
+          <SplineComp
+            scene="https://prod.spline.design/FduaNp3csZktbOi3/scene.splinecode"
+            style={{ width: '100%', height: '100%' }}
+          />
+        </div>
+      ) : (
+        // Fallback background if Spline is unavailable
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-950 to-black" />
+          <div className="absolute inset-0 opacity-30" aria-hidden>
+            <div className="animate-[scan_8s_linear_infinite] h-1/2 w-full bg-[radial-gradient(circle_at_50%_0,rgba(6,182,212,0.25),transparent_60%)]" />
+          </div>
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute bottom-8 left-0 right-0 mx-auto max-w-3xl overflow-hidden rounded-md border border-white/5 bg-black/30">
+              <div className="animate-[marquee_18s_linear_infinite] whitespace-nowrap p-3 font-mono text-xs text-cyan-200/70">
+                &gt; const tech = ['HTML','CSS','JavaScript','PHP','Laravel','Python']; // keep shipping 🚀 — CyberTech
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Overlay gradients to enhance readability (no pointer blocking) */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-950/60 to-slate-950/90" />
@@ -50,7 +84,7 @@ const Hero = () => {
           </a>
         </div>
 
-        {/* Subtle code ticker */}
+        {/* Subtle code ticker (always visible) */}
         <div className="pointer-events-none mt-12 w-full max-w-3xl overflow-hidden rounded-md border border-white/5 bg-black/20">
           <div className="animate-[marquee_18s_linear_infinite] whitespace-nowrap p-3 font-mono text-xs text-cyan-200/70">
             $ npm run build —> optimized production bundle • CI ready • type-safe • lint clean • deploy in seconds
@@ -61,6 +95,7 @@ const Hero = () => {
 
       <style>{`
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        @keyframes scan { 0% { transform: translateY(-100%); } 100% { transform: translateY(200%); } }
       `}</style>
     </section>
   );
