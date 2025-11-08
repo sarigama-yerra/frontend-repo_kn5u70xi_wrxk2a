@@ -39,7 +39,7 @@ const Hero = () => {
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute bottom-8 left-0 right-0 mx-auto max-w-3xl overflow-hidden rounded-md border border-white/5 bg-black/30">
               <div className="animate-[marquee_18s_linear_infinite] whitespace-nowrap p-3 font-mono text-xs text-cyan-200/70">
-                &gt; const tech = ['HTML','CSS','JavaScript','PHP','Laravel','Python']; // keep shipping 🚀 — CyberTech
+                {"> const tech = ['HTML','CSS','JavaScript','PHP','Laravel','Python']; // keep shipping 🚀 — CyberTech"}
               </div>
             </div>
           </div>
@@ -87,8 +87,7 @@ const Hero = () => {
         {/* Subtle code ticker (always visible) */}
         <div className="pointer-events-none mt-12 w-full max-w-3xl overflow-hidden rounded-md border border-white/5 bg-black/20">
           <div className="animate-[marquee_18s_linear_infinite] whitespace-nowrap p-3 font-mono text-xs text-cyan-200/70">
-            $ npm run build —> optimized production bundle • CI ready • type-safe • lint clean • deploy in seconds
-            — const dev = { html: true, css: true, js: true, php: true, laravel: true, python: true } — keep shipping 🚀
+            {"$ npm run build —> optimized production bundle • CI ready • type-safe • lint clean • deploy in seconds — const dev = { html: true, css: true, js: true, php: true, laravel: true, python: true } — keep shipping 🚀"}
           </div>
         </div>
       </div>
