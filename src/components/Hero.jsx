@@ -1,50 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import Spline from '@splinetool/react-spline';
 
 const Hero = () => {
-  const [SplineComp, setSplineComp] = useState(null);
-
-  // Lazy-load Spline so the page still renders even if the package/asset is unavailable
-  useEffect(() => {
-    let mounted = true;
-    import('@splinetool/react-spline')
-      .then((mod) => {
-        if (mounted) setSplineComp(() => mod.default);
-      })
-      .catch(() => {
-        setSplineComp(null);
-      });
-    return () => {
-      mounted = false;
-    };
-  }, []);
-
   return (
     <section id="home" className="relative min-h-screen w-full overflow-hidden bg-slate-950 text-white">
       {/* 3D Spline Background */}
-      {SplineComp ? (
-        <div className="absolute inset-0">
-          <SplineComp
-            scene="https://prod.spline.design/FduaNp3csZktbOi3/scene.splinecode"
-            style={{ width: '100%', height: '100%' }}
-          />
-        </div>
-      ) : (
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-950 to-black" />
-          <div className="absolute inset-0 opacity-30" aria-hidden>
-            <div className="h-1/2 w-full animate-[scan_8s_linear_infinite] bg-[radial-gradient(circle_at_50%_0,rgba(6,182,212,0.25),transparent_60%)]" />
-          </div>
-          <div className="pointer-events-none absolute inset-0">
-            <div className="absolute bottom-8 left-0 right-0 mx-auto max-w-3xl overflow-hidden rounded-md border border-white/5 bg-black/30">
-              <div className="animate-[marquee_18s_linear_infinite] whitespace-nowrap p-3 font-mono text-xs text-cyan-200/70">
-                {"> const tech = ['HTML','CSS','JavaScript','PHP','Laravel','Python']; // keep shipping 🚀 — CyberTech"}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      <div className="absolute inset-0">
+        <Spline
+          scene="https://prod.spline.design/FduaNp3csZktbOi3/scene.splinecode"
+          style={{ width: '100%', height: '100%' }}
+        />
+      </div>
 
-      {/* Readability gradients (no pointer blocking) */}
+      {/* Readability gradients (do not block interactions) */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-950/50 to-slate-950/90" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(6,182,212,0.20),transparent_60%)]" />
 
@@ -106,6 +74,11 @@ const Hero = () => {
           <div className="animate-[marquee_18s_linear_infinite] whitespace-nowrap p-3 font-mono text-xs text-cyan-200/70">
             {"$ npm run build —> optimized production bundle • CI ready • type-safe • lint clean • deploy in seconds — const dev = { html: true, css: true, js: true, php: true, laravel: true, python: true } — keep shipping 🚀"}
           </div>
+        </div>
+
+        {/* Ambient scan highlight to emphasize motion even if 3D fails */}
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-1/2 opacity-30" aria-hidden>
+          <div className="h-full w-full animate-[scan_8s_linear_infinite] bg-[radial-gradient(circle_at_50%_0,rgba(6,182,212,0.25),transparent_60%)]" />
         </div>
       </div>
 
